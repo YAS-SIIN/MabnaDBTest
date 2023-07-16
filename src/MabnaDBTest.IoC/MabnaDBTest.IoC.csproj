@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="APIConfiguration.cs" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MabnaDBTest.Infra.Data\MabnaDBTest.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

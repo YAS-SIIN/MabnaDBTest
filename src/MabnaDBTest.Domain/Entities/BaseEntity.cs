@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
-using System.Linq.Expressions;            
+using System.Linq.Expressions;
 using System.ComponentModel.DataAnnotations;
 
-namespace MabnaDBTest.Domain.Entities.Common;
+namespace MabnaDBTest.Domain.Entities;
 
 /// <summary>
 /// Base Entity Class Which is base of the every entity. 

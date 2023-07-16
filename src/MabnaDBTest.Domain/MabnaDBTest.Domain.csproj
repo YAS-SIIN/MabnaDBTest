@@ -7,24 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Common\**" />
-    <Compile Remove="DTOs\**" />
-    <Compile Remove="Entities\**" />
-    <Compile Remove="Enums\**" />
-    <Compile Remove="Interfaces\**" />
-    <Compile Remove="Models\**" />
-    <EmbeddedResource Remove="Common\**" />
-    <EmbeddedResource Remove="DTOs\**" />
-    <EmbeddedResource Remove="Entities\**" />
-    <EmbeddedResource Remove="Enums\**" />
-    <EmbeddedResource Remove="Interfaces\**" />
-    <EmbeddedResource Remove="Models\**" />
-    <None Remove="Common\**" />
-    <None Remove="DTOs\**" />
-    <None Remove="Entities\**" />
-    <None Remove="Enums\**" />
-    <None Remove="Interfaces\**" />
-    <None Remove="Models\**" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
   </ItemGroup>
 
 </Project>

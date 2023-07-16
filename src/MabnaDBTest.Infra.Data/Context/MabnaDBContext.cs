@@ -1,15 +1,15 @@
-﻿using MabnaDBTest.Domain.Entities.MabnaDBTest.Employees;
+﻿using MabnaDBTest.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace MabnaDBTest.Infra.Data.Context;
 
-public class ERPDbContext : DbContext
+public class MabnaDBContext : DbContext
 {
-    public ERPDbContext(DbContextOptions options) : base(options)
+    public MabnaDBContext(DbContextOptions options) : base(options)
     {
     }
     #region Employe    
-    public DbSet<Employee> EMPEmployees { get; set; }
+    public DbSet<Trade> EMPEmployees { get; set; }
     #endregion
                
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -17,9 +17,9 @@ public class ERPDbContext : DbContext
         //var mutableProperties = modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.Name == "Status"));
                  
         #region Employe 
-        new EmployeeEntityTypeConfiguration().Configure(modelBuilder.Entity<Employee>());
+        new EmployeeEntityTypeConfiguration().Configure(modelBuilder.Entity<Trade>());
         #endregion
-        modelBuilder.Entity<Employee>().ToTable("Employee", schema: "EMP").Property(x => x.Id).UseHiLo("EMPEmployee_Hilo");
+        modelBuilder.Entity<Trade>().ToTable("Employee", schema: "EMP").Property(x => x.Id).UseHiLo("EMPEmployee_Hilo");
        
         //foreach (var mutableEntityType in modelBuilder.Model.GetEntityTypes())
         //{
@@ -28,7 +28,7 @@ public class ERPDbContext : DbContext
         //foreach (var property in mutableProperties)
         //    property. = "varchar(100)";
 
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ERPDbContext).Assembly); base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(MabnaDBContext).Assembly); base.OnModelCreating(modelBuilder);
     }
 
 

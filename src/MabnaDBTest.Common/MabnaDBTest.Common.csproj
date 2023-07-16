@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,19 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Behaviours\**" />
-    <Compile Remove="Exceptions\**" />
-    <Compile Remove="Mapper\**" />
-    <EmbeddedResource Remove="Behaviours\**" />
-    <EmbeddedResource Remove="Exceptions\**" />
-    <EmbeddedResource Remove="Mapper\**" />
-    <None Remove="Behaviours\**" />
-    <None Remove="Exceptions\**" />
-    <None Remove="Mapper\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
   </ItemGroup>
 
 </Project>

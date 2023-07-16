@@ -17,7 +17,7 @@ namespace MabnaDBTest.Common.Enums
         [Display(Name = "عملیات با موفقیت انجام شد.")]
         public const string Done = "101";
 
-        [Display(Name = "خطایی در انجتم عملیات رخ داده است.")]
+        [Display(Name = "خطایی در انجام عملیات رخ داده است.")]
         public const string Error = "102";
                 
         [Display(Name = "فرمت فایل مجاز نمی باشد.")]

@@ -15,12 +15,11 @@ namespace MabnaDBTest.Infra.Data.UnitOfWork;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly CoreDBContextInjection _context;
-    //private bool disposed = false;                       
+                     
 
     public UnitOfWork(CoreDBContextInjection context)
     {
-
-      // Database.SetInitializer<MyDataBase>(null);
+                                                      
         if (context == null)
             throw new ArgumentException("DB context is null!");
         _context = context;              
