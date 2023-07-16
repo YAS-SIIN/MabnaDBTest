@@ -8,6 +8,7 @@ namespace MabnaDBTest.Domain.Entities;
 public class Instrument : BaseEntity<int>
 {                                           
     public string Name { get; set; }
+    public List<Trade> Trade { get; set; }    
 }
 
 public class InstrumentEntityTypeConfiguration : IEntityTypeConfiguration<Instrument>
