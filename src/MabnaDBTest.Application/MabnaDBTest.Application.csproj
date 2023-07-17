@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Instrument\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MabnaDBTest.Common\MabnaDBTest.Common.csproj" />
+    <ProjectReference Include="..\MabnaDBTest.Domain\MabnaDBTest.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -16,4 +16,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MabnaDBTest.Common\MabnaDBTest.Common.csproj" />
+    <ProjectReference Include="..\MabnaDBTest.IoC\MabnaDBTest.IoC.csproj" />
+  </ItemGroup>
+
 </Project>

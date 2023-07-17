@@ -1,3 +1,7 @@
+using MabnaDBTest.Common.Common.Behaviours;
+
+using MediatR;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Register(builder.Configuration);
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateEmployeeCommandHandler).GetTypeInfo().Assembly));
+                 
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));  
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

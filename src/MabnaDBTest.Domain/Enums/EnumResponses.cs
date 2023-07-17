@@ -8,32 +8,35 @@ using System.Threading.Tasks;
 
 namespace MabnaDBTest.Common.Enums
 {
-    public static class EnumErrorList
+    public static class EnumResponses
     {
 
         [Display(Name = "اطلاعاتی یافت نشد.")]
-        public const string NotFound = "100";
+        public const int NotFound = 100;
 
         [Display(Name = "عملیات با موفقیت انجام شد.")]
-        public const string Done = "101";
+        public const int Done = 101;
 
         [Display(Name = "خطایی در انجام عملیات رخ داده است.")]
-        public const string Error = "102";
+        public const int Error = 102;
                 
         [Display(Name = "فرمت فایل مجاز نمی باشد.")]
-        public const string FileFormat = "103";
+        public const int FileFormat = 103;
 
         [Display(Name = "فایل انتخاب نشده است.")]
-        public const string NotFoundFile = "104";
+        public const int NotFoundFile = 104;
 
         [Display(Name = "شما به این عملیات دسترسی ندارید.")]
-        public const string NotAccess = "105";
+        public const int NotAccess = 105;
 
         [Display(Name = "شما وارد سیستم شده اید.")]
-        public const string LoginedUser = "106";
+        public const int LoginedUser = 106;
 
         [Display(Name = "اطلاعات مورد نظر قابل حذف نمی باشد.")]
-        public const string NotDelete = "107";
+        public const int NotDelete = 107;
+                              
+        [Display(Name = "اطلاعاتی با موفقیت ثبت شد.")]
+        public const int Success = 200;
 
     }
 }
