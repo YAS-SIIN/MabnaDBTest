@@ -1,5 +1,5 @@
 using MabnaDBTest.Common.Common.Behaviours;
-
+using MabnaDBTest.IoC;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);

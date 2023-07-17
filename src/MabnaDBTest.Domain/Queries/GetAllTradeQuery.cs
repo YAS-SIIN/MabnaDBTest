@@ -6,6 +6,6 @@ using MediatR;
 
 namespace MabnaDBTest.Application.UseCases.Instrument.Queries;
 
-public class GetAllInstrumentQuery : IRequest<CustomResponseDto<GetAllInstrumentResponse>>
+public class GetAllTradeQuery : IRequest<CustomResponseDto<IEnumerable<GetAllTradeResponse>>>
 {
 }

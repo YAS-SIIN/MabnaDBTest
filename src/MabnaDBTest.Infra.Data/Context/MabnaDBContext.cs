@@ -8,16 +8,18 @@ public class MabnaDBContext : DbContext
     public MabnaDBContext(DbContextOptions options) : base(options)
     {
     }
-    #region Trade    
+      
     public DbSet<Trade> Trades { get; set; }
-    #endregion
+     public DbSet<Instrument> Instruments { get; set; }
+   
                
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {          
-        #region Trade 
+    {                 
         new TradeEntityTypeConfiguration().Configure(modelBuilder.Entity<Trade>());
-        #endregion
-        modelBuilder.Entity<Trade>().Property(x => x.Id).UseHiLo("Trade_Hilo");
+        new InstrumentEntityTypeConfiguration().Configure(modelBuilder.Entity<Instrument>());
+  
+        //modelBuilder.Entity<Trade>().Property(x => x.Id).UseHiLo("Trade_Hilo");
+        //modelBuilder.Entity<Instrument>();
                          
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(MabnaDBContext).Assembly); base.OnModelCreating(modelBuilder);
     }
@@ -43,7 +45,7 @@ public class MabnaDBContext : DbContext
         return base.SaveChanges();
     }   
 
-    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
         foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("Created") != null))
         {

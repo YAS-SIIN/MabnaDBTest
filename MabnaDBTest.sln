@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MabnaDBTest.API", "src\MabnaDBTest.API\MabnaDBTest.API.csproj", "{C34C2CC9-C5BD-40C6-B677-8B07077D6F2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MabnaDBTest.API", "src\MabnaDBTest.API\MabnaDBTest.API.csproj", "{C34C2CC9-C5BD-40C6-B677-8B07077D6F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MabnaDBTest.Application", "src\MabnaDBTest.Application\MabnaDBTest.Application.csproj", "{5EE8CCEF-B04E-4F1B-B91B-F750456BA383}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MabnaDBTest.Application", "src\MabnaDBTest.Application\MabnaDBTest.Application.csproj", "{5EE8CCEF-B04E-4F1B-B91B-F750456BA383}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MabnaDBTest.Common", "src\MabnaDBTest.Common\MabnaDBTest.Common.csproj", "{FAB13809-4B0A-43C3-928B-72E15E4F22B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MabnaDBTest.Common", "src\MabnaDBTest.Common\MabnaDBTest.Common.csproj", "{FAB13809-4B0A-43C3-928B-72E15E4F22B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MabnaDBTest.Core", "src\MabnaDBTest.Core\MabnaDBTest.Core.csproj", "{0E8DC92C-1AE5-4CDD-8081-2941D8E0D496}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MabnaDBTest.Core", "src\MabnaDBTest.Core\MabnaDBTest.Core.csproj", "{0E8DC92C-1AE5-4CDD-8081-2941D8E0D496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MabnaDBTest.Domain", "src\MabnaDBTest.Domain\MabnaDBTest.Domain.csproj", "{7F77B3E0-90ED-49B9-972B-D879F1A9A577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MabnaDBTest.Domain", "src\MabnaDBTest.Domain\MabnaDBTest.Domain.csproj", "{7F77B3E0-90ED-49B9-972B-D879F1A9A577}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MabnaDBTest.Infra.Data", "src\MabnaDBTest.Infra.Data\MabnaDBTest.Infra.Data.csproj", "{6E022C5F-F418-46F2-A500-2D5613D687E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MabnaDBTest.Infra.Data", "src\MabnaDBTest.Infra.Data\MabnaDBTest.Infra.Data.csproj", "{6E022C5F-F418-46F2-A500-2D5613D687E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MabnaDBTest.IoC", "src\MabnaDBTest.IoC\MabnaDBTest.IoC.csproj", "{BE53F465-FC72-4612-88D0-4BE49B890CD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MabnaDBTest.IoC", "src\MabnaDBTest.IoC\MabnaDBTest.IoC.csproj", "{BE53F465-FC72-4612-88D0-4BE49B890CD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MabnaDBTest.CLI", "MabnaDBTest.CLI\MabnaDBTest.CLI.csproj", "{3A83BB6D-F1BB-42A7-9CA2-AD310F626728}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{BE53F465-FC72-4612-88D0-4BE49B890CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE53F465-FC72-4612-88D0-4BE49B890CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE53F465-FC72-4612-88D0-4BE49B890CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A83BB6D-F1BB-42A7-9CA2-AD310F626728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A83BB6D-F1BB-42A7-9CA2-AD310F626728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A83BB6D-F1BB-42A7-9CA2-AD310F626728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A83BB6D-F1BB-42A7-9CA2-AD310F626728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,13 +11,13 @@ namespace MabnaDBTest.Domain.Enums
     public enum EnumDBContextType
     {
 
-        [Display(Name = "MAIN ERP DBContext")]
+        [Display(Name = "MAIN MabnaDBTest DBContext")]
         MAIN_MabnaDBContext = 0,
 
-        [Display(Name = "READ ERP DBContext")]
+        [Display(Name = "READ MabnaDBTest DBContext")]
         READ_MabnaDBContext = 1, 
 
-        [Display(Name = "WRITE ERP DBContext")]
+        [Display(Name = "WRITE MabnaDBTest DBContext")]
         WRITE_MabnaDBContext = 2,
     }
 

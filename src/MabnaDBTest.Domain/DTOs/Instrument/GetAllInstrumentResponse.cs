@@ -1,7 +1,7 @@
 ﻿ 
 namespace MabnaDBTest.Domain.DTOs.Instrument
 {
-    public class GetAllInstrumentResponse
+    public class GetAllTradeResponse
     {
     }
 }

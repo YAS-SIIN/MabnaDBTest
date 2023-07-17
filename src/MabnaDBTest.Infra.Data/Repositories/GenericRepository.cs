@@ -1,5 +1,6 @@
 ﻿
 
+using MabnaDBTest.Domain.Entities;
 using MabnaDBTest.Domain.Enums;
 using MabnaDBTest.Domain.Interfaces.Repositories;
 using MabnaDBTest.Infra.Data.Context;
@@ -10,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Linq.Expressions; 
 
 namespace MabnaDBTest.Infra.Data.Repositories;
 
