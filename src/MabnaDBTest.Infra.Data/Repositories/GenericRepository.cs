@@ -155,13 +155,13 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     public async virtual Task AddAsync(T entity, CancellationToken cancellationToken, bool save = false)
     {
         await _dbSet.AddAsync(entity, cancellationToken);
-        if (save) await SaveChangesAsync(cancellationToken);
+        if (save) SaveChanges();
     }
 
     public async virtual Task AddRangeAsync(List<T> entityList, CancellationToken cancellationToken, bool save = false)
     {
         await _dbSet.AddRangeAsync(entityList, cancellationToken);
-        if (save) await SaveChangesAsync(cancellationToken);
+        if (save) SaveChanges();
     }
 
     #endregion

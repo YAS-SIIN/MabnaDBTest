@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace MabnaDBTest.Common.Enums;
 
  
-    public enum EnumBaseStatus
+    public enum EnumBaseStatus : short
     {
 
         [Display(Name = "Deactive")]

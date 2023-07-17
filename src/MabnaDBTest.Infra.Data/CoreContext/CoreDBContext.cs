@@ -4,23 +4,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MabnaDBTest.Infra.Data.CoreContext;
 
-public class MAIN_MabnaDBContext : MabnaDBContext
+public class MAIN_MabnaDbContext : MabnaDbContext
 {
-    public MAIN_MabnaDBContext(DbContextOptions<MAIN_MabnaDBContext> options) : base(options)
+    public MAIN_MabnaDbContext(DbContextOptions<MAIN_MabnaDbContext> options) : base(options)
     {
     }
 }
 
-public class READ_MabnaDBContext : MabnaDBContext
+public class READ_MabnaDbContext : MabnaDbContext
 {
-    public READ_MabnaDBContext(DbContextOptions<READ_MabnaDBContext> options) : base(options)
+    public READ_MabnaDbContext(DbContextOptions<READ_MabnaDbContext> options) : base(options)
     {
     }
 }
 
-public class WRITE_MabnaDBContext : MabnaDBContext
+public class WRITE_MabnaDbContext : MabnaDbContext
 {
-    public WRITE_MabnaDBContext(DbContextOptions<WRITE_MabnaDBContext> options) : base(options)
+    public WRITE_MabnaDbContext(DbContextOptions<WRITE_MabnaDbContext> options) : base(options)
     {
     }
 }

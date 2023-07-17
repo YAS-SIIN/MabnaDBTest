@@ -15,20 +15,23 @@ using System.Text;
 
 namespace MabnaDBTest.Application.UseCases.Instrument.Queries;
 
-public class GetAllTradeQueryHandler : IRequestHandler<GetAllTradeQuery, CustomResponseDto<IEnumerable<GetAllTradeResponse>>>
+public class GetAllTradeQuery : IRequest<CustomResponseDto<IEnumerable<GetAllTradeResponse>>>
 {
 
     private readonly IUnitOfWork _uw;
-    public GetAllTradeQueryHandler(IUnitOfWork uw)
+    public GetAllTradeQuery(IUnitOfWork uw)
     {
         _uw = uw;
     }
 
-    public async Task<CustomResponseDto<IEnumerable<GetAllTradeResponse>>> Handle(GetAllTradeQuery request,
+    public async Task<CustomResponseDto<IEnumerable<GetAllTradeResponse>>> Handle(
         CancellationToken cancellationToken)
     {
-        StringBuilder SqlQuery = new StringBuilder();
-        SqlQuery.Append("Select * From dbo.Trade");
+        StringBuilder SqlQuery = new StringBuilder(" SELECT instruments.Name, trades.*");
+        SqlQuery.AppendLine(" FROM dbo.Instruments instruments");
+        SqlQuery.AppendLine(" JOIN dbo.Trades trades ON instruments.Id = trades.InstrumentId");
+        SqlQuery.AppendLine(" WHERE trades.DateEn = (SELECT MAX(DateEn) FROM dbo.Trades WHERE InstrumentId = instruments.Id)");
+        SqlQuery.AppendLine(" ORDER BY instruments.Id;");
        var response = await _uw.SqlQueryViewAsync<GetAllTradeResponse>(EnumDBContextType.READ_MabnaDBContext, SqlQuery.ToString());
     
         //GetAllTradeResponse response = Mapper<GetAllTradeResponse, List<Domain.Entities.Instrument>>.MappClasses(databaseData.ToList());

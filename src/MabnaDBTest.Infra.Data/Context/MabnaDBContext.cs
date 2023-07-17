@@ -1,27 +1,28 @@
 ﻿using MabnaDBTest.Domain.Entities;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace MabnaDBTest.Infra.Data.Context;
 
-public class MabnaDBContext : DbContext
+public class MabnaDbContext : DbContext
 {
-    public MabnaDBContext(DbContextOptions options) : base(options)
+    public MabnaDbContext(DbContextOptions options) : base(options)
     {
     }
-      
+
     public DbSet<Trade> Trades { get; set; }
-     public DbSet<Instrument> Instruments { get; set; }
-   
-               
+    public DbSet<Instrument> Instruments { get; set; }
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {                 
+    {
         new TradeEntityTypeConfiguration().Configure(modelBuilder.Entity<Trade>());
         new InstrumentEntityTypeConfiguration().Configure(modelBuilder.Entity<Instrument>());
-  
+
         //modelBuilder.Entity<Trade>().Property(x => x.Id).UseHiLo("Trade_Hilo");
         //modelBuilder.Entity<Instrument>();
-                         
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(MabnaDBContext).Assembly); base.OnModelCreating(modelBuilder);
+
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(MabnaDbContext).Assembly); base.OnModelCreating(modelBuilder);
     }
 
 
@@ -43,7 +44,7 @@ public class MabnaDBContext : DbContext
         }
 
         return base.SaveChanges();
-    }   
+    }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {

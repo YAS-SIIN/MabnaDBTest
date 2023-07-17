@@ -9,9 +9,11 @@ namespace MabnaDBTest.API.Controllers
     public class TradeController : BaseApiController
     {
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromBody] GetAllTradeQuery request)
+        public async Task<IActionResult> GetAll()
         {
-            return OkReult(await Mediator.Send(request));
+            var query = new GetAllTradeQuery(_UnitOfWork);
+            await query.Handle(new CancellationToken());
+            return OkReult(await _Mediator.Send(query));
         }
 
     }

@@ -16,9 +16,9 @@ public static class APIConfiguration
 {
     public static void Register(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<MAIN_MabnaDBContext>(options => options.UseSqlServer(configuration["ApplicationOptions:MAIN_MabnaDBConnectionString"]));
-        services.AddDbContext<READ_MabnaDBContext>(options => options.UseSqlServer(configuration["ApplicationOptions:READ_MabnaDBConnectionString"]));
-        services.AddDbContext<WRITE_MabnaDBContext>(options => options.UseSqlServer(configuration["ApplicationOptions:WRTIE_MabnaDBConnectionString"]));
+        services.AddDbContext<MAIN_MabnaDbContext>(options => options.UseSqlServer(configuration["ApplicationOptions:MAIN_MabnaDBConnectionString"]));
+        services.AddDbContext<READ_MabnaDbContext>(options => options.UseSqlServer(configuration["ApplicationOptions:READ_MabnaDBConnectionString"]));
+        services.AddDbContext<WRITE_MabnaDbContext>(options => options.UseSqlServer(configuration["ApplicationOptions:WRTIE_MabnaDBConnectionString"]));
         //builder.Services.AddDbContext<MyDataBase>(options => options.UseInMemoryDatabase("MyDB"));           
         //services.AddMediatR(Assembly.GetExecutingAssembly());
         //services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));

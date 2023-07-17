@@ -1,4 +1,6 @@
 ﻿using MabnaDBTest.Domain.DTOs;
+using MabnaDBTest.Domain.Interfaces.UnitOfWork;
+using MabnaDBTest.Infra.Data.UnitOfWork;
 
 using MediatR;
 
@@ -11,10 +13,11 @@ namespace MabnaDBTest.API.Controllers;
 [Route("api/[controller]")]
 public abstract class BaseApiController : ControllerBase
 {
-    private IMediator _mediator;      
-    protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-
-
+    private IMediator _mediator;       
+    private IUnitOfWork _unitOfWork;       
+    protected IUnitOfWork _UnitOfWork => _unitOfWork ??= HttpContext.RequestServices.GetService<IUnitOfWork>();
+    protected IMediator _Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+  
     public IActionResult OkReult<T>(CustomResponseDto<T> response)
     {
         return new ObjectResult(response.StatusCode == 204 ? null : response)
