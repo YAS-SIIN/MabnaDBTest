@@ -30,7 +30,7 @@ public class GetAllTradeQuery : IRequest<CustomResponseDto<IEnumerable<GetAllTra
         StringBuilder SqlQuery = new StringBuilder(" SELECT instruments.Name, trades.*");
         SqlQuery.AppendLine(" FROM dbo.Instruments instruments");
         SqlQuery.AppendLine(" JOIN dbo.Trades trades ON instruments.Id = trades.InstrumentId");
-        SqlQuery.AppendLine(" WHERE trades.DateEn = (SELECT MAX(DateEn) FROM dbo.Trades WHERE InstrumentId = instruments.Id)");
+        SqlQuery.AppendLine(" WHERE trades.id = (SELECT MAX(id) FROM dbo.Trades WHERE InstrumentId = instruments.Id)");
         SqlQuery.AppendLine(" ORDER BY instruments.Id;");
        var response = await _uw.SqlQueryViewAsync<GetAllTradeResponse>(EnumDBContextType.READ_MabnaDBContext, SqlQuery.ToString());
     
