@@ -1,6 +1,9 @@
+using MabnaDBTest.Application.UseCases.Instrument.Queries;
 using MabnaDBTest.Common.Common.Behaviours;
 using MabnaDBTest.IoC;
 using MediatR;
+
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.Register(builder.Configuration);
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateEmployeeCommandHandler).GetTypeInfo().Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllTradeQueryHandler).GetTypeInfo().Assembly));
                  
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));  
 var app = builder.Build();

@@ -5,9 +5,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MabnaDBTest.Domain.Entities;
 
+/// <summary>
+/// جدول مربوط به معاملات
+/// </summary>
 public class Trade : BaseEntity<int>
 {
-    //public DateTime DateEn { get; set; }    
+
+    /// <summary>
+    /// تاریخ معامله
+    /// </summary>
+    public DateTime DateEn { get; set; }    
     public Decimal Open { get; set; }    
     public Decimal High { get; set; }    
     public Decimal Low { get; set; }    
