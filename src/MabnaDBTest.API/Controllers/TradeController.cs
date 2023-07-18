@@ -8,6 +8,10 @@ namespace MabnaDBTest.API.Controllers
     [Route("api/[controller]")]
     public class TradeController : BaseApiController
     {
+        /// <summary>
+        /// دریافت اطلاعات آخرین معامله هر نماد
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

@@ -9,10 +9,14 @@ namespace MabnaDBTest.API
 {
     public class DataGenerator
     {
+        /// <summary>
+        /// افزودن اطلاعات اولیه
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public static void Initialize(IServiceProvider serviceProvider)
         {
             var _unitOfWork = serviceProvider.GetRequiredService<IUnitOfWork>();
-
+            // افزودن چند ردیف نماد
             if (!_unitOfWork.GetRepository<Instrument>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).ExistData())
             {
                 List<Instrument> trade = new List<Instrument>() {
