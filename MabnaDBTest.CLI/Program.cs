@@ -4,8 +4,9 @@
 using MabnaDBTest.CLI;
 
 Console.Write("Please write number of row that you want to insert : ");
-var aa = Console.Read();
-int insertCount = Convert.ToInt32(aa);
+var numberOfInsertCount = Console.ReadKey();
+
+int insertCount = Convert.ToInt32(numberOfInsertCount.KeyChar.ToString());
  
 TradeData tradeData = new TradeData();
 tradeData.InsertRandom(insertCount);

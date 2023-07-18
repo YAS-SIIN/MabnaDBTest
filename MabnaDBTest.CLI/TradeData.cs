@@ -20,19 +20,26 @@ namespace MabnaDBTest.CLI
         /// <param name="insertCount">تعداد ردیف</param>
         public void InsertRandom(int insertCount)
         {
-            StringBuilder SqlQuery = new StringBuilder("INSERT INTO dbo.Trades VALUES ");
-            Random random = new Random();
-      
-            for (int i = 0; i < insertCount; i++)
+            try
             {
-                SqlQuery.AppendLine($"('{DateTime.Now}', {random.Next(1000, 9999)}, {random.Next(1000, 9999)}, {random.Next(100, 999)}, {random.Next(100, 999)}, 1, '{DateTime.Now}', '{DateTime.Now}', ''){(i == insertCount - 1 ? ";" : ",") }");
+                StringBuilder SqlQuery = new StringBuilder("INSERT INTO dbo.Trades VALUES ");
+                Random random = new Random();
+
+                for (int i = 0; i < insertCount; i++)
+                {
+                    SqlQuery.AppendLine($"(NEXT VALUE FOR Trade_Hilo, '{DateTime.Now}', {random.Next(1000, 9999)}, {random.Next(1000, 9999)}, {random.Next(100, 999)}, {random.Next(100, 999)}, 1, '{DateTime.Now}', '{DateTime.Now}', ''){(i == insertCount - 1 ? ";" : ",")}");
+                }
+
+                IDbConnection dbConnection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; UID=sa; Password=ABCabc123456;Database=MabnaDB;");
+                using (dbConnection)
+                {
+                    var a = dbConnection.Execute(SqlQuery.ToString());
+                }
             }
-             
-            IDbConnection dbConnection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; UID=sa; Password=ABCabc123456;Database=MabnaDB;");
-            using (dbConnection)
-            {
-                var a = dbConnection.Execute(SqlQuery.ToString());
+            catch (Exception)
+            {  
             }
+          
         }
     }
 }
