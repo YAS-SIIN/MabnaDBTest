@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Instrument\Commands\" />
+    <Compile Remove="UseCases\Instrument\Commands\**" />
+    <EmbeddedResource Remove="UseCases\Instrument\Commands\**" />
+    <None Remove="UseCases\Instrument\Commands\**" />
   </ItemGroup>
 
   <ItemGroup>

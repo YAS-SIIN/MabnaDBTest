@@ -14,24 +14,24 @@ namespace MabnaDBTest.CLI
 {
     public class TradeData
     {
+        /// <summary>
+        /// افزودن داده های رندم در جدول معاملات
+        /// </summary>
+        /// <param name="insertCount">تعداد ردیف</param>
         public void InsertRandom(int insertCount)
         {
             StringBuilder SqlQuery = new StringBuilder("INSERT INTO dbo.Trades VALUES ");
             Random random = new Random();
+      
             for (int i = 0; i < insertCount; i++)
             {
-                SqlQuery.AppendLine($"('{DateTime.Now}', {random.Next(1000,9999)}, {random.Next(1000, 9999)}, {random.Next(100, 999)}, {random.Next(100, 999)}, 1, 1, '{DateTime.Now}', '{DateTime.Now}', '')");
-                if (i == insertCount - 1)
-                    SqlQuery.Append(";");
-                else
-                    SqlQuery.Append(",");
-
+                SqlQuery.AppendLine($"('{DateTime.Now}', {random.Next(1000, 9999)}, {random.Next(1000, 9999)}, {random.Next(100, 999)}, {random.Next(100, 999)}, 1, 1, '{DateTime.Now}', '{DateTime.Now}', ''){(i == insertCount - 1 ? ";" : ",") }");
             }
-            //SqlQuery.Append("Select * From dbo.EMPEmployee");
+             
             IDbConnection dbConnection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; UID=sa; Password=ABCabc123456;Database=MabnaDB;");
             using (dbConnection)
             {
-               var a= dbConnection.Query(SqlQuery.ToString());
+                var a = dbConnection.Execute(SqlQuery.ToString());
             }
         }
     }
