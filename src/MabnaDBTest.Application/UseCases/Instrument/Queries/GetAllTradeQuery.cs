@@ -31,24 +31,22 @@ public class GetAllTradeQuery : IRequest<CustomResponseDto<IEnumerable<GetAllTra
         CancellationToken cancellationToken)
     {
 
-        StringBuilder SqlQuery = new StringBuilder(" SELECT instruments.Name, trades.*");
+        StringBuilder SqlQuery = new StringBuilder(" GO");
 
-        SqlQuery.AppendLine(" IF Not Exists(Select 1 FRom  sys.indexes Where Name = N'IX_NonClusteredIndex_Trade_InstrumentId')");
+        SqlQuery.AppendLine(" IF Not Exists(Select * FRom  sys.indexes Where Name ='IX_NonClusteredIndex_Trades_InstrumentId')");
         SqlQuery.AppendLine(" Begin");
-        SqlQuery.AppendLine("    CREATE NONCLUSTERED INDEX IX_NonClusteredIndex_Trade_InstrumentId ON[dbo].[Trade]");
-        SqlQuery.AppendLine("    ([InstrumentId] ASC)");
-        SqlQuery.AppendLine("	 INCLUDE([Id],[DateEn],[Open],[High],[Low],[Close]) WITH(PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]");
+        SqlQuery.AppendLine(" 	CREATE NONCLUSTERED INDEX IX_NonClusteredIndex_Trades_InstrumentId ON [dbo].[Trades]");
+        SqlQuery.AppendLine(" 	([InstrumentId] ASC)");
+        SqlQuery.AppendLine(" 	INCLUDE([Id],[DateEn],[Open],[High],[Low],[Close]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]");
         SqlQuery.AppendLine(" End");
-        SqlQuery.AppendLine(" SELECT Instrument.Name, Trade.DateEn, Trade.[Open], Trade.High, Trade.Low, Trade.[Close]");
-        SqlQuery.AppendLine("  FROM [dbo].[Instrument]");
-        SqlQuery.AppendLine("  Outer apply");
-        SqlQuery.AppendLine("  (SELECT        TOP (1)   DateEn, [Open], High, Low, [Close]");
-        SqlQuery.AppendLine(" FROM  Trade Where InstrumentId=Instrument.id Order by Trade.Id desc) Trade");
+        SqlQuery.AppendLine(" ");
+        SqlQuery.AppendLine(" SELECT Instruments.Name, Trades.DateEn, Trades.[Open], Trades.High, Trades.Low, Trades.[Close]");
+        SqlQuery.AppendLine("   FROM [dbo].[Instruments]");
+        SqlQuery.AppendLine("   Outer apply");
+        SqlQuery.AppendLine("   (SELECT        TOP (1)   DateEn, [Open], High, Low, [Close]");
+        SqlQuery.AppendLine(" FROM            Trades Where InstrumentId=Instruments.id Order by Trades.Id desc) Trades");
 
-        SqlQuery.AppendLine(" FROM dbo.Instruments instruments");
-        SqlQuery.AppendLine(" JOIN dbo.Trades trades ON instruments.Id = trades.InstrumentId");
-        SqlQuery.AppendLine(" WHERE trades.DateEn = (SELECT MAX(DateEn) FROM dbo.Trades WHERE InstrumentId = instruments.Id)");
-        SqlQuery.AppendLine(" ORDER BY instruments.Id;");
+
         var response = await _uw.SqlQueryViewAsync<GetAllTradeResponse>(EnumDBContextType.READ_MabnaDBContext, SqlQuery.ToString());
 
         //GetAllTradeResponse response = Mapper<GetAllTradeResponse, List<Domain.Entities.Instrument>>.MappClasses(databaseData.ToList());
