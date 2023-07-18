@@ -27,8 +27,8 @@ public class MabnaDbContext : DbContext
 
 
     public override int SaveChanges()
-    {
-        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DateTime") != null))
+    { 
+        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("CreateDateTime") != null))
         {
             if (entry.State == EntityState.Added)
             {
@@ -39,8 +39,8 @@ public class MabnaDbContext : DbContext
 
             if (entry.State == EntityState.Modified)
             {
-                entry.Property("CreateDateTime").IsModified = false;
                 entry.Property("UpdateDateTime").CurrentValue = DateTime.Now;
+                entry.Property("CreateDateTime").IsModified = false;
             }
         }
 
@@ -49,7 +49,7 @@ public class MabnaDbContext : DbContext
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
-        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DateTime") != null))
+        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("CreateDateTime") != null))
         {
             if (entry.State == EntityState.Added)
             {

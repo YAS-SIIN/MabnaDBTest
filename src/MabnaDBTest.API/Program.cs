@@ -1,6 +1,7 @@
 ﻿using MabnaDBTest.API;
-using MabnaDBTest.Application;
-using MabnaDBTest.Application.UseCases.Instrument.Queries;
+using MabnaDBTest.Application; 
+using MabnaDBTest.Application.UseCases.Trade.Commands;
+using MabnaDBTest.Application.UseCases.Trade.Queries;
 using MabnaDBTest.Common.Common.Behaviours;
 using MabnaDBTest.Domain.DTOs;
 using MabnaDBTest.Domain.DTOs.Instrument;
@@ -21,13 +22,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.Register(builder.Configuration);
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(MabnaDBTest.Application.InjectMediatR).GetTypeInfo().Assembly)); 
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(UnhandledExceptionBehaviour<,>).GetTypeInfo().Assembly)); 
-//var assembly = AppDomain.CurrentDomain.Load("MabnaDBTest.Application");
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
-
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllTradeResponse).GetTypeInfo().Assembly));  
  
+ 
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(InjectMediatR).GetTypeInfo().Assembly));  
+ 
+
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
  
 var app = builder.Build();

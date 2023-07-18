@@ -7,18 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="UseCases\Instrument\Commands\**" />
-    <EmbeddedResource Remove="UseCases\Instrument\Commands\**" />
-    <None Remove="UseCases\Instrument\Commands\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.143" />
     <PackageReference Include="MediatR" Version="12.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MabnaDBTest.Common\MabnaDBTest.Common.csproj" />
+    <ProjectReference Include="..\MabnaDBTest.Core\MabnaDBTest.Core.csproj" />
     <ProjectReference Include="..\MabnaDBTest.Domain\MabnaDBTest.Domain.csproj" />
   </ItemGroup>
 

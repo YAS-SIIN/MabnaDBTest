@@ -1,4 +1,6 @@
-﻿using MabnaDBTest.Application.UseCases.Instrument.Queries;
+﻿
+using MabnaDBTest.Core.Commands.Employee;
+using MabnaDBTest.Core.Queries;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +17,18 @@ namespace MabnaDBTest.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var query = new GetAllTradeQuery(_UnitOfWork);
-            return OkReult(await query.Handle(new CancellationToken()));
-            //return OkReult(await _Mediator.Send(query));
+            var query = new GetAllTradeQuery();
+            return OkReult(await _Mediator.Send(query));
+        }
+
+        /// <summary>
+        /// ثبت معامله جدید
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Insert(CreateTradeCommand model)
+        { 
+            return OkReult(await _Mediator.Send(model));
         }
 
     }

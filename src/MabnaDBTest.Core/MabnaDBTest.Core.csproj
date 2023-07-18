@@ -12,8 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Commands\" />
+    <ProjectReference Include="..\MabnaDBTest.Domain\MabnaDBTest.Domain.csproj" />
   </ItemGroup>
 
 </Project>
