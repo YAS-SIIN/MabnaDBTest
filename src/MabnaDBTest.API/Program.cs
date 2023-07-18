@@ -23,8 +23,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.Register(builder.Configuration);
 //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(MabnaDBTest.Application.InjectMediatR).GetTypeInfo().Assembly)); 
 //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(UnhandledExceptionBehaviour<,>).GetTypeInfo().Assembly)); 
-var assembly = AppDomain.CurrentDomain.Load("MabnaDBTest.Application");
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+//var assembly = AppDomain.CurrentDomain.Load("MabnaDBTest.Application");
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllTradeResponse).GetTypeInfo().Assembly));  
  

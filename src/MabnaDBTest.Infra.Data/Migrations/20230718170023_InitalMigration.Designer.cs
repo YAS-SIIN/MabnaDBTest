@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MabnaDBTest.Infra.Data.Migrations
 {
     [DbContext(typeof(WRITE_MabnaDbContext))]
-    [Migration("20230717203340_InitalMigration")]
+    [Migration("20230718170023_InitalMigration")]
     partial class InitalMigration
     {
         /// <inheritdoc />
@@ -24,6 +24,9 @@ namespace MabnaDBTest.Infra.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.HasSequence("Trade_Hilo")
+                .IncrementsBy(10);
 
             modelBuilder.Entity("MabnaDBTest.Domain.Entities.Instrument", b =>
                 {
@@ -45,9 +48,6 @@ namespace MabnaDBTest.Infra.Data.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<short>("Status")
-                        .HasColumnType("smallint");
-
                     b.Property<DateTime>("UpdateDateTime")
                         .HasColumnType("datetime2");
 
@@ -62,7 +62,7 @@ namespace MabnaDBTest.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "Trade_Hilo");
 
                     b.Property<decimal>("Close")
                         .HasPrecision(19, 4)
@@ -92,9 +92,6 @@ namespace MabnaDBTest.Infra.Data.Migrations
                     b.Property<decimal>("Open")
                         .HasPrecision(19, 4)
                         .HasColumnType("decimal(19,4)");
-
-                    b.Property<short>("Status")
-                        .HasColumnType("smallint");
 
                     b.Property<DateTime>("UpdateDateTime")
                         .HasColumnType("datetime2");

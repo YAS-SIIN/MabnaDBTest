@@ -11,6 +11,10 @@ namespace MabnaDBTest.Infra.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence(
+                name: "Trade_Hilo",
+                incrementBy: 10);
+
             migrationBuilder.CreateTable(
                 name: "Instruments",
                 columns: table => new
@@ -18,7 +22,6 @@ namespace MabnaDBTest.Infra.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Status = table.Column<short>(type: "smallint", nullable: false),
                     CreateDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true)
@@ -32,15 +35,13 @@ namespace MabnaDBTest.Infra.Data.Migrations
                 name: "Trades",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     DateEn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Open = table.Column<decimal>(type: "decimal(19,4)", precision: 19, scale: 4, nullable: false),
                     High = table.Column<decimal>(type: "decimal(19,4)", precision: 19, scale: 4, nullable: false),
                     Low = table.Column<decimal>(type: "decimal(19,4)", precision: 19, scale: 4, nullable: false),
                     Close = table.Column<decimal>(type: "decimal(19,4)", precision: 19, scale: 4, nullable: false),
                     InstrumentId = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<short>(type: "smallint", nullable: false),
                     CreateDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true)
@@ -69,6 +70,9 @@ namespace MabnaDBTest.Infra.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Instruments");
+
+            migrationBuilder.DropSequence(
+                name: "Trade_Hilo");
         }
     }
 }

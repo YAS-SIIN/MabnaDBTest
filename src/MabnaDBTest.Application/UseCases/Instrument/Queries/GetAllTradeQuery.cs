@@ -33,13 +33,7 @@ public class GetAllTradeQuery : IRequest<CustomResponseDto<IEnumerable<GetAllTra
 
         StringBuilder SqlQuery = new StringBuilder(" GO");
 
-        SqlQuery.AppendLine(" IF Not Exists(Select * FRom  sys.indexes Where Name ='IX_NonClusteredIndex_Trades_InstrumentId')");
-        SqlQuery.AppendLine(" Begin");
-        SqlQuery.AppendLine(" 	CREATE NONCLUSTERED INDEX IX_NonClusteredIndex_Trades_InstrumentId ON [dbo].[Trades]");
-        SqlQuery.AppendLine(" 	([InstrumentId] ASC)");
-        SqlQuery.AppendLine(" 	INCLUDE([Id],[DateEn],[Open],[High],[Low],[Close]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]");
-        SqlQuery.AppendLine(" End");
-        SqlQuery.AppendLine(" ");
+    
         SqlQuery.AppendLine(" SELECT Instruments.Name, Trades.DateEn, Trades.[Open], Trades.High, Trades.Low, Trades.[Close]");
         SqlQuery.AppendLine("   FROM [dbo].[Instruments]");
         SqlQuery.AppendLine("   Outer apply");

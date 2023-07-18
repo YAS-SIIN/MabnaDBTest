@@ -16,9 +16,6 @@ public abstract class BaseEntity<TKey>
     public TKey? Id { get; set; }
 
     [Required]
-    public short Status { get; set; }
-
-    [Required]
     public DateTime CreateDateTime { get; set; }
 
     [Required]

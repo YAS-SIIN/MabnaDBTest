@@ -22,6 +22,9 @@ namespace MabnaDBTest.Infra.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence("Trade_Hilo")
+                .IncrementsBy(10);
+
             modelBuilder.Entity("MabnaDBTest.Domain.Entities.Instrument", b =>
                 {
                     b.Property<int>("Id")
@@ -42,9 +45,6 @@ namespace MabnaDBTest.Infra.Data.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<short>("Status")
-                        .HasColumnType("smallint");
-
                     b.Property<DateTime>("UpdateDateTime")
                         .HasColumnType("datetime2");
 
@@ -59,7 +59,7 @@ namespace MabnaDBTest.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "Trade_Hilo");
 
                     b.Property<decimal>("Close")
                         .HasPrecision(19, 4)
@@ -89,9 +89,6 @@ namespace MabnaDBTest.Infra.Data.Migrations
                     b.Property<decimal>("Open")
                         .HasPrecision(19, 4)
                         .HasColumnType("decimal(19,4)");
-
-                    b.Property<short>("Status")
-                        .HasColumnType("smallint");
 
                     b.Property<DateTime>("UpdateDateTime")
                         .HasColumnType("datetime2");

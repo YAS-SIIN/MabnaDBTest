@@ -25,7 +25,7 @@ namespace MabnaDBTest.CLI
       
             for (int i = 0; i < insertCount; i++)
             {
-                SqlQuery.AppendLine($"('{DateTime.Now}', {random.Next(1000, 9999)}, {random.Next(1000, 9999)}, {random.Next(100, 999)}, {random.Next(100, 999)}, 1, 1, '{DateTime.Now}', '{DateTime.Now}', ''){(i == insertCount - 1 ? ";" : ",") }");
+                SqlQuery.AppendLine($"('{DateTime.Now}', {random.Next(1000, 9999)}, {random.Next(1000, 9999)}, {random.Next(100, 999)}, {random.Next(100, 999)}, 1, '{DateTime.Now}', '{DateTime.Now}', ''){(i == insertCount - 1 ? ";" : ",") }");
             }
              
             IDbConnection dbConnection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; UID=sa; Password=ABCabc123456;Database=MabnaDB;");

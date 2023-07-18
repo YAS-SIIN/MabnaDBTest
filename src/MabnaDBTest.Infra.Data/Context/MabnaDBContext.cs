@@ -19,8 +19,8 @@ public class MabnaDbContext : DbContext
         new TradeEntityTypeConfiguration().Configure(modelBuilder.Entity<Trade>());
         new InstrumentEntityTypeConfiguration().Configure(modelBuilder.Entity<Instrument>());
 
-        //modelBuilder.Entity<Trade>().Property(x => x.Id).UseHiLo("Trade_Hilo");
-        //modelBuilder.Entity<Instrument>();
+        modelBuilder.Entity<Trade>().Property(x => x.Id).UseHiLo("Trade_Hilo");
+        modelBuilder.Entity<Instrument>();
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(MabnaDbContext).Assembly); base.OnModelCreating(modelBuilder);
     }
@@ -49,7 +49,7 @@ public class MabnaDbContext : DbContext
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
-        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("Created") != null))
+        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DateTime") != null))
         {
             if (entry.State == EntityState.Added)
             {

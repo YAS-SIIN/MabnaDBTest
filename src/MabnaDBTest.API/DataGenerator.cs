@@ -25,10 +25,10 @@ namespace MabnaDBTest.API
             if (!_unitOfWork.GetRepository<Instrument>(Domain.Enums.EnumDBContextType.READ_MabnaDBContext).ExistData())
             {
                 List<Instrument> instruments = new List<Instrument>() {
-                new Instrument { Name = "Bank1", Status = (short)EnumBaseStatus.Active },
-                new Instrument { Name = "Bank2", Status = (short)EnumBaseStatus.Active },
-                new Instrument { Name = "Company1", Status = (short)EnumBaseStatus.Active },
-                new Instrument { Name = "Company2", Status = (short)EnumBaseStatus.Active }
+                new Instrument { Name = "Bank1" },
+                new Instrument { Name = "Bank2" },
+                new Instrument { Name = "Company1" },
+                new Instrument { Name = "Company2" }
             };
                 _unitOfWork.GetRepository<Instrument>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).AddRangeAsync(instruments, new CancellationToken(), true);
             }
@@ -53,8 +53,7 @@ namespace MabnaDBTest.API
                             Open = random.Next(1000, 9999),
                             High = random.Next(1000, 9999),
                             Low = random.Next(100, 999),
-                            Close = random.Next(100, 999),
-                            Status = (short)EnumBaseStatus.Active
+                            Close = random.Next(100, 999)
                         });
                     }
                     _unitOfWork.GetRepository<Trade>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).AddRangeAsync(item.Trade, new CancellationToken());
