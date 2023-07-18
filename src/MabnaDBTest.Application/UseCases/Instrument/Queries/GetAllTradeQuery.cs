@@ -43,7 +43,12 @@ Begin
 	)
 	INCLUDE([Id],[DateEn],[Open],[High],[Low],[Close]) WITH(PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON[PRIMARY]
 End
-
+        SELECT Instrument.Name, Trade.DateEn, Trade.[Open], Trade.High, Trade.Low, Trade.[Close]
+  FROM [Lerning].[dbo].[Instrument]
+  Outer apply
+  (SELECT        TOP (1)   DateEn, [Open], High, Low, [Close]
+FROM            Trade Where InstrumentId=Instrument.id Order by Trade.Id desc)
+  Trade
          */
         StringBuilder SqlQuery = new StringBuilder(" SELECT instruments.Name, trades.*");
         SqlQuery.AppendLine(" FROM dbo.Instruments instruments");

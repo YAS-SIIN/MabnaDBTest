@@ -31,7 +31,7 @@ namespace MabnaDBTest.CLI
             IDbConnection dbConnection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; UID=sa; Password=ABCabc123456;Database=MabnaDB;");
             using (dbConnection)
             {
-               var a= dbConnection.Query(SqlQuery.ToString());
+               var a= dbConnection.ex(SqlQuery.ToString());
             }
         }
     }
