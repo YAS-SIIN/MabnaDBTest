@@ -28,11 +28,12 @@ public class MabnaDbContext : DbContext
 
     public override int SaveChanges()
     {
-        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("Created") != null))
+        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DateTime") != null))
         {
             if (entry.State == EntityState.Added)
             {
                 entry.Property("CreateDateTime").CurrentValue = DateTime.Now;
+                entry.Property("UpdateDateTime").CurrentValue = DateTime.Now;
                 continue;
             }
 
@@ -53,6 +54,7 @@ public class MabnaDbContext : DbContext
             if (entry.State == EntityState.Added)
             {
                 entry.Property("CreateDateTime").CurrentValue = DateTime.Now;
+                entry.Property("UpdateDateTime").CurrentValue = DateTime.Now;
                 continue;
             }
 

@@ -43,20 +43,23 @@ namespace MabnaDBTest.API
                 List<Trade> trades = new List<Trade>();
                 foreach (Instrument item in _instrumentList)
                 {
+                    item.Trade = new List<Trade>();
                     for (int i = 0; i < 2; i++)
                     {
-                        trades.Add(new Trade { 
-                            Id = item.Id, 
+                        item.Trade.Add(new Trade
+                        {
+                            Id = item.Id,
                             DateEn = DateTime.Now,
                             Open = random.Next(1000, 9999),
                             High = random.Next(1000, 9999),
                             Low = random.Next(100, 999),
-                            Close = random.Next(100,999),
-                            Status = (short)EnumBaseStatus.Active});
+                            Close = random.Next(100, 999),
+                            Status = (short)EnumBaseStatus.Active
+                        });
                     }
+                    _unitOfWork.GetRepository<Trade>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).AddRangeAsync(item.Trade, new CancellationToken());
                 }
-                _unitOfWork.GetRepository<Trade>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).AddRangeAsync(trades, new CancellationToken(), true);
-
+                _unitOfWork.GetRepository<Trade>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).SaveChanges();
             }
 
         }
