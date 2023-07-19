@@ -1,10 +1,6 @@
 ﻿using MabnaDBTest.API;
 using MabnaDBTest.Application; 
-using MabnaDBTest.Application.UseCases.Trade.Commands;
-using MabnaDBTest.Application.UseCases.Trade.Queries;
 using MabnaDBTest.Common.Common.Behaviours;
-using MabnaDBTest.Domain.DTOs;
-using MabnaDBTest.Domain.DTOs.Instrument;
 using MabnaDBTest.Domain.Interfaces.UnitOfWork;
 using MabnaDBTest.Infra.Data.UnitOfWork;
 using MabnaDBTest.IoC;

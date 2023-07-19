@@ -30,19 +30,19 @@ namespace MabnaDBTest.API
                 new Instrument { Name = "Company1" },
                 new Instrument { Name = "Company2" }
             };
-                _unitOfWork.GetRepository<Instrument>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).AddRangeAsync(instruments, new CancellationToken(), true);
+                _unitOfWork.GetRepository<Instrument>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).AddRange(instruments, true);
             }
 
 
             // افزودن چند ردیف معامله
             if (!_unitOfWork.GetRepository<Trade>(Domain.Enums.EnumDBContextType.READ_MabnaDBContext).ExistData())
             {
-                var _instrumentList = _unitOfWork.GetRepository<Instrument>(Domain.Enums.EnumDBContextType.READ_MabnaDBContext).GetAll().ToList();
+                var _instrumentList = _unitOfWork.GetRepository<Instrument>(Domain.Enums.EnumDBContextType.READ_MabnaDBContext).GetAll().Include(x=>x.Trade).ToList();
 
                 Random random = new Random();
                 foreach (Instrument item in _instrumentList)
                 {
-                    item.Trade = new List<Trade>();
+                    //item.Trade = new List<Trade>();
                     for (int i = 0; i < 2; i++)
                     {
                         item.Trade.Add(new Trade
@@ -51,7 +51,7 @@ namespace MabnaDBTest.API
                             Open = random.Next(1000, 9999),
                             High = random.Next(1000, 9999),
                             Low = random.Next(100, 999),
-                            Close = random.Next(100, 999)
+                            Close = random.Next(100, 999),
                         });
                     }
                     _unitOfWork.GetRepository<Trade>(Domain.Enums.EnumDBContextType.WRITE_MabnaDBContext).AddRange(item.Trade, true);

@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MabnaDBTest.Application\MabnaDBTest.Application.csproj" />
     <ProjectReference Include="..\MabnaDBTest.Common\MabnaDBTest.Common.csproj" />
+    <ProjectReference Include="..\MabnaDBTest.Core\MabnaDBTest.Core.csproj" />
     <ProjectReference Include="..\MabnaDBTest.IoC\MabnaDBTest.IoC.csproj" />
   </ItemGroup>
 
